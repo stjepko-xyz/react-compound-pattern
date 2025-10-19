@@ -1,12 +1,12 @@
-import { useState } from 'react';
 import './App.css';
+import UserModal from './components/UserModal';
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  const x = ['sda', 2];
-
-  return <main></main>;
+  return (
+    <main className="max-w-[800px] mx-auto p-4">
+      <UserModal />
+    </main>
+  );
 }
 
 export default App;
