@@ -1,3 +1,44 @@
+# React compound pattern (with react-compiler)
+
+React Compiler is now stable and has been tested extensively in production. 
+
+Previously without the compiler, you would need to manually memoize components and values to optimize re-renders (useMemo). This was the case especially in components that used the compound pattern.
+
+This repo includes an example with a Modal component that uses the compound pattern. 
+
+This pattern is very handy if:
+- You have a component that is re-used for different scenario's.
+- You are building an advanced component which will have a lot of conditions and elements.
+- You need the freedom to extend the component in an easy way without impacting or combining different states.
+
+```ts
+const UserModal = () => {
+  const [user, setUser] = useState({ value: '', open: false });
+
+  return (
+    <Modal.Provider state={user} actions={{ update: setUser }}>
+      <Modal.Trigger />
+      <Modal.Content>
+        <Modal.Header title={'Add user'} description={'In this modal you can add users'} />
+        <Modal.InputField />
+        <Modal.Footer>
+          <Modal.Submit />
+        </Modal.Footer>
+      </Modal.Content>
+    </Modal.Provider>
+  );
+};
+```
+
+- React (ts + compiler)
+- Vite
+- Shadcn for UI components
+
+**Good reads/talks**
+- https://react.dev/learn/react-compiler/introduction
+- https://www.patterns.dev/react/compound-pattern/
+- https://www.youtube.com/watch?v=4KvbVq3Eg5w @nandorojo
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
